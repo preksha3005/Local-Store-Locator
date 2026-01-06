@@ -1,0 +1,135 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px;
+  border-bottom: 1px solid #eee;
+  background-color: #ffffff;
+}
+
+.navbar-logo {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #111;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+}
+
+.navbar-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 16px;
+}
+
+.navbar-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #2563eb;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.navbar-logout {
+  background: none;
+  border: none;
+  color: #dc2626;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+
+/* ============================= */
+/* 900px and below (tablets) */
+/* ============================= */
+
+@media (max-width: 900px) {
+  .navbar {
+    padding: 14px 28px;
+  }
+
+  .navbar-logo {
+    font-size: 18px;
+  }
+}
+
+/* ============================= */
+/* 600px and below (phones) */
+/* ============================= */
+
+@media (max-width: 600px) {
+  .navbar {
+    padding: 12px 20px;
+  }
+
+  .navbar-logo {
+    font-size: 16px;
+  }
+
+  .navbar-links {
+    gap: 14px;
+  }
+
+  .navbar-link {
+    font-size: 13px;
+  }
+
+  .navbar-profile {
+    gap: 10px;
+    margin-left: 10px;
+  }
+
+  .navbar-avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+  }
+
+  .navbar-logout {
+    font-size: 12px;
+  }
+}
+
+/* ============================= */
+/* 400px and below (small phones) */
+/* ============================= */
+
+@media (max-width: 400px) {
+  .navbar {
+    padding: 10px 14px;
+  }
+
+  .navbar-logo {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .navbar-links {
+    gap: 10px;
+  }
+
+  .navbar-avatar {
+    width: 26px;
+    height: 26px;
+    font-size: 12px;
+  }
+
+  .navbar-logout {
+    font-size: 11.5px;
+  }
+}
