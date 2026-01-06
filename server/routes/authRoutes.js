@@ -2,7 +2,7 @@ import express from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
-import { protect} from "../middleware/authMiddleware.js";
+import { protect } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
@@ -42,24 +42,29 @@ router.post("/login", async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch)
       return res.status(400).json({ message: "Invalid credentials" });
-    const token = jwt.sign(
-      { id: user._id, role: user.role },
-      process.env.KEY,
-      { expiresIn: "1d" }
-    );
+    const token = jwt.sign({ id: user._id, role: user.role }, process.env.KEY, {
+      expiresIn: "1d",
+    });
+
+    // res.cookie("token", token, {
+    //   httpOnly: true,
+    //   secure: false, // true in production
+    //   sameSite: "lax",
+    // });
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false, // true in production
-      sameSite: "lax",
+      secure: true, // Always set to true for production HTTPS
+      sameSite: "None", // 'None' is required for cross-site cookies
+      maxAge: 3600000,
     });
-
+    
     res.json({
       message: "Login successful",
       role: user.role,
     });
   } catch (error) {
-      console.error("LOGIN ERROR:", error);
+    console.error("LOGIN ERROR:", error);
     res.status(500).json({ message: "Login failed" });
   }
 });
